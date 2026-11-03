@@ -15,3 +15,5 @@ footer{border-top:1px solid var(--line);padding:20px 0 28px;color:#74808a;font-s
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
 
 .flow-progress .p-0{width:0}.flow-progress .p-25{width:25%}.flow-progress .p-50{width:50%}.flow-progress .p-75{width:75%}.summary .summary-secondary{margin-top:7px;background:#263540;color:#d7e0e6}
+
+.form-error{flex-basis:100%;min-height:0;color:#ffbd79;font-size:10px;line-height:1.45;padding:0 2px}.form-error:empty{display:none}
