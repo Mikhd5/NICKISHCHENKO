@@ -65,7 +65,7 @@ if(stepIndex<flow.steps.length){renderStep()}else{renderSummary()}
 function renderSummary(){
 const flow=flows[activeFlow];
 const lines=flow.steps.map((s,i)=>'<p><b>'+escapeHtml(s.q)+'</b><br>'+escapeHtml(typeof answers[i]==='object'?(answers[i].name+' · '+answers[i].contact):answers[i])+'</p>').join('');
-wall.insertAdjacentHTML('beforeend',bubble('Дякуємо! Перевірте, будь ласка, вашу заявку:')+'<div class="summary"><h4>ПОПЕРЕДНЯ ЗАЯВКА · '+escapeHtml(flow.title.toUpperCase())+'</h4>'+lines+'<button data-action="submitLead">Підтвердити заявку ↗</button><button data-action="restart" style="margin-top:7px;background:#263540;color:#d7e0e6">Змінити відповіді</button></div>');
+wall.insertAdjacentHTML('beforeend',bubble('Дякуємо! Перевірте, будь ласка, вашу заявку:')+'<div class="summary"><h4>ПОПЕРЕДНЯ ЗАЯВКА · '+escapeHtml(flow.title.toUpperCase())+'</h4>'+lines+'<button data-action="submitLead">Підтвердити заявку ↗</button><button data-action="restart" class="summary-secondary">Змінити відповіді</button></div>');
 wall.scrollTop=wall.scrollHeight;
 }
 function submitLead(){
