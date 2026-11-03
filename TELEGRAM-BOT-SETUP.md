@@ -45,7 +45,16 @@ In the nickishchenko Vercel project, open Settings -> Environment Variables and 
 - SUPABASE_URL - Supabase Project URL
 - SUPABASE_SERVICE_ROLE_KEY - Supabase service_role key
 
-Generate a webhook secret locally with: openssl rand -hex 32
+Generate a webhook secret locally. In Windows PowerShell:
+
+~~~powershell
+$bytes = New-Object byte[] 32
+[System.Security.Cryptography.RandomNumberGenerator]::Create().GetBytes($bytes)
+$webhookSecret = -join ($bytes | ForEach-Object { $_.ToString("x2") })
+$webhookSecret
+~~~
+
+Copy the generated value into TELEGRAM_WEBHOOK_SECRET in Vercel. Keep it private.
 
 Apply variables to Production, then redeploy the production deployment. Use Preview only when testing with a separate test bot.
 
@@ -59,11 +68,22 @@ The production webhook URL is:
 
 https://nickishchenko.vercel.app/api/telegram/webhook
 
-Run this command in a private terminal, replacing the placeholders with the exact values from Vercel:
+In Windows PowerShell, enter the bot token when prompted. Paste the same webhook secret that you saved in Vercel:
 
-curl -X POST "https://api.telegram.org/bot<TELEGRAM_BOT_TOKEN>/setWebhook" -H "Content-Type: application/json" -d '{"url":"https://nickishchenko.vercel.app/api/telegram/webhook","secret_token":"<TELEGRAM_WEBHOOK_SECRET>","allowed_updates":["message","callback_query"],"max_connections":10}'
+~~~powershell
+$botToken = Read-Host "BotFather token"
+$webhookSecret = Read-Host "Webhook secret from Vercel"
+$body = @{
+  url = "https://nickishchenko.vercel.app/api/telegram/webhook"
+  secret_token = $webhookSecret
+  allowed_updates = @("message", "callback_query")
+  max_connections = 10
+} | ConvertTo-Json
+Invoke-RestMethod -Method Post -Uri "https://api.telegram.org/bot$botToken/setWebhook" -ContentType "application/json" -Body $body
+Invoke-RestMethod -Uri "https://api.telegram.org/bot$botToken/getWebhookInfo"
+~~~
 
-Then inspect getWebhookInfo privately and verify that the URL is set and last_error_message is empty.
+The setWebhook result should have ok = true. In getWebhookInfo, verify that the URL is correct and last_error_message is empty. Keep the token and webhook secret private.
 
 ## 6. Test
 
