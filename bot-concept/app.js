@@ -1,17 +1,9 @@
 (function(){
 'use strict';
 const wall=document.getElementById('chatWall');
-const clientView=document.getElementById('clientView');
-const adminView=document.getElementById('adminView');
-const customerTab=document.getElementById('customerTab');
-const adminTab=document.getElementById('adminTab');
 const stageTitle=document.getElementById('stageTitle');
 const toast=document.getElementById('toast');
-let activeFlow=null,stepIndex=0,answers={},leads=[
-{id:'#1042',name:'Андрій К.',contact:'@andrii_k',service:'Авто зі США',status:'Нова',kind:'new'},
-{id:'#1041',name:'Олександр М.',contact:'+380 •• ••• 12 45',service:'Викуп авто',status:'У роботі',kind:'work'},
-{id:'#1040',name:'Ірина В.',contact:'@iryna_v',service:'Обмін авто',status:'Завершена',kind:'done'}
-];
+let activeFlow=null,stepIndex=0,answers={};
 const flows={
 usa:{title:'Замовити авто зі США',steps:[
 {q:'Яку марку або модель автомобіля розглядаєте?',hint:'Наприклад: BMW X5, Audi Q7 або поки не визначилися.',type:'text',placeholder:'Марка та модель'},
@@ -99,30 +91,13 @@ wall.insertAdjacentHTML('beforeend',bubble('Дякуємо! Перевірте, 
 wall.scrollTop=wall.scrollHeight;
 }
 function submitLead(){
-const flow=flows[activeFlow];const contact=answers[flow.steps.length-1]||{name:'Демо-клієнт',contact:'контакт у демо'};
-const lead={id:'#'+(1043+leads.length-3),name:contact.name,contact:contact.contact,service:flow.title,status:'Нова',kind:'new'};
-leads.unshift(lead);renderLeads();
-wall.insertAdjacentHTML('beforeend',bubble('✅ <strong>Дякуємо, '+escapeHtml(contact.name)+'!</strong><br>Вашу заявку сформовано в демонстраційному режимі.<br><br>У робочій версії менеджер отримає всі відповіді та зв’яжеться з вами.',''));
-wall.scrollTop=wall.scrollHeight;activeFlow=null;showToast('Демо-заявку додано до CRM-прикладу');
+const contact=answers[flows[activeFlow].steps.length-1]||{name:'друже',contact:'контакт'};
+wall.insertAdjacentHTML('beforeend',bubble('✅ <strong>Дякуємо, '+escapeHtml(contact.name)+'!</strong><br>Демонстраційний сценарій завершено. У реальному боті підтверджена заявка збережеться та надійде менеджеру в Telegram.',''));
+wall.scrollTop=wall.scrollHeight;activeFlow=null;showToast('Демонстраційний сценарій завершено');
 }
 function startFlow(key){
 activeFlow=key;stepIndex=0;answers={};const flow=flows[key];
 wall.innerHTML='<div class="date-chip">Нова заявка</div>';addUser(flow.title);renderStep();
-}
-function renderLeads(){
-const rows=document.getElementById('leadRows');
-rows.innerHTML=leads.map((l,i)=>'<div class="lead"><div><strong>'+escapeHtml(l.name)+'</strong><small>'+escapeHtml(l.id)+' · '+escapeHtml(l.contact)+'</small></div><div class="service-tag">'+escapeHtml(l.service)+'</div><div><span class="status '+(l.kind==='done'?'done':l.kind==='new'?'new':'')+'">'+escapeHtml(l.status)+'</span></div><div><button class="lead-action" data-lead="'+i+'">'+(l.kind==='new'?'Взяти':l.kind==='work'?'Закрити':'Переглянути')+'</button></div></div>').join('');
-document.getElementById('metricTotal').textContent=String(leads.length).padStart(2,'0');
-document.getElementById('metricNew').textContent=String(leads.filter(l=>l.kind==='new').length).padStart(2,'0');
-document.getElementById('metricWork').textContent=String(leads.filter(l=>l.kind==='work').length).padStart(2,'0');
-document.getElementById('metricDone').textContent=String(leads.filter(l=>l.kind==='done').length).padStart(2,'0');
-}
-function showView(which){
-const isAdmin=which==='admin';clientView.hidden=isAdmin;adminView.hidden=!isAdmin;
-customerTab.classList.toggle('active',!isAdmin);adminTab.classList.toggle('active',isAdmin);
-customerTab.setAttribute('aria-selected',String(!isAdmin));adminTab.setAttribute('aria-selected',String(isAdmin));
-stageTitle.textContent=isAdmin?'CRM менеджера':'Інтерфейс клієнта';
-if(isAdmin)renderLeads();
 }
 wall.addEventListener('click',e=>{
 const svc=e.target.closest('[data-service]');if(svc){startFlow(svc.dataset.service);return}
@@ -135,16 +110,5 @@ if(action==='submitLead'){submitLead();return}
 if(action==='restart'&&activeFlow){stepIndex=0;answers={};wall.innerHTML=bubble('Повернімося до початку заявки.');renderStep()}
 });
 
-document.getElementById('leadRows').addEventListener('click',e=>{
-const btn=e.target.closest('[data-lead]');if(!btn)return;const i=Number(btn.dataset.lead),lead=leads[i];
-if(lead.kind==='new'){lead.kind='work';lead.status='У роботі';showToast('Заявку взято в роботу')}
-else if(lead.kind==='work'){lead.kind='done';lead.status='Завершена';showToast('Заявку позначено завершеною')}
-else{showToast('Картка заявки · '+lead.id)}
-renderLeads();
-});
-customerTab.addEventListener('click',()=>showView('customer'));
-adminTab.addEventListener('click',()=>showView('admin'));
-document.getElementById('newLead').addEventListener('click',()=>{leads.unshift({id:'#'+(1043+leads.length-3),name:'Новий клієнт',contact:'@demo_client',service:'Нова консультація',status:'Нова',kind:'new'});renderLeads();showToast('Додано демонстраційну заявку')});
-document.getElementById('refreshLeads').addEventListener('click',()=>{renderLeads();showToast('Демонстраційні дані оновлено')});
-renderHome();renderLeads();
+renderHome();
 })();
