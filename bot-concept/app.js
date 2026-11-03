@@ -49,11 +49,41 @@ let html='<div class="flow-progress"><span class="p-'+progress+'"></span></div>'
 if(step.type==='choice'){
 html+='<div class="choice-grid">'+step.choices.map((v,i)=>'<button class="choice" data-choice="'+i+'">'+escapeHtml(v)+'</button>').join('')+'</div>';
 }else if(step.type==='contact'){
-html+='<form class="form-step" id="stepForm"><input name="name" placeholder="Ваше ім’я" required maxlength="70" autocomplete="name"><input name="contact" placeholder="Телефон або @Instagram" required maxlength="100"><button type="submit">Продовжити →</button></form>';
+html+='<form class="form-step" id="stepForm"><input name="name" placeholder="Ваше ім’я" maxlength="70" autocomplete="name"><input name="contact" placeholder="Телефон або @Instagram" maxlength="100"><button type="submit">Продовжити →</button><div class="form-error" aria-live="polite"></div></form>';
 }else{
-html+='<form class="form-step" id="stepForm"><input name="answer" placeholder="'+escapeHtml(step.placeholder||'Ваша відповідь')+'" required maxlength="180"><button type="submit">Продовжити →</button></form>';
+html+='<form class="form-step" id="stepForm"><input name="answer" placeholder="'+escapeHtml(step.placeholder||'Ваша відповідь')+'" maxlength="180"><button type="submit">Продовжити →</button></form>';
 }
 wall.insertAdjacentHTML('beforeend',html);wall.scrollTop=wall.scrollHeight;
+bindStepForm();
+}
+function bindStepForm(){
+const form=document.getElementById('stepForm');
+if(!form)return;
+form.addEventListener('submit',event=>{
+event.preventDefault();
+const data=new FormData(form);
+const error=form.querySelector('.form-error');
+const type=flows[activeFlow].steps[stepIndex].type;
+if(type==='contact'){
+const name=String(data.get('name')||'').trim();
+const contact=String(data.get('contact')||'').trim();
+if(!name||!contact){
+error.textContent='Заповніть ім’я та контакт, щоб продовжити.';
+const field=!name?form.elements.name:form.elements.contact;
+field.focus();
+return;
+}
+nextStep({name,contact});
+}else{
+const value=String(data.get('answer')||'').trim();
+if(!value){
+error.textContent='Введіть відповідь у поле вище, будь ласка.';
+form.elements.answer.focus();
+return;
+}
+nextStep(value);
+}
+});
 }
 function nextStep(value){
 const flow=flows[activeFlow],step=flow.steps[stepIndex];
@@ -104,12 +134,7 @@ if(action==='delivery'){addUser('Як проходить доставка зі �
 if(action==='submitLead'){submitLead();return}
 if(action==='restart'&&activeFlow){stepIndex=0;answers={};wall.innerHTML=bubble('Повернімося до початку заявки.');renderStep()}
 });
-wall.addEventListener('submit',e=>{
-if(e.target.id!=='stepForm')return;e.preventDefault();
-const data=new FormData(e.target);if(flows[activeFlow].steps[stepIndex].type==='contact'){
-const name=String(data.get('name')||'').trim(),contact=String(data.get('contact')||'').trim();if(!name||!contact)return;nextStep({name,contact});
-}else{const val=String(data.get('answer')||'').trim();if(val)nextStep(val)}
-});
+
 document.getElementById('leadRows').addEventListener('click',e=>{
 const btn=e.target.closest('[data-lead]');if(!btn)return;const i=Number(btn.dataset.lead),lead=leads[i];
 if(lead.kind==='new'){lead.kind='work';lead.status='У роботі';showToast('Заявку взято в роботу')}
