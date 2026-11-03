@@ -1,0 +1,219 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080b0f">
+<meta name="description" content="Інтерактивний концепт Telegram-асистента NICKISHCHENKO — авто зі США, викуп та обмін.">
+<title>NICKISHCHENKO | Telegram Assistant Concept</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#080b0f;--panel:#11171e;--panel2:#171f28;--line:rgba(255,255,255,.1);--text:#f4f6f7;--muted:#9ba6b0;--yellow:#ffc928;--green:#58c995;--blue:#8bb8d8;--radius:22px;--shadow:0 24px 70px rgba(0,0,0,.38)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(1000px 600px at 82% -8%,rgba(48,76,97,.23),transparent 68%),var(--bg);color:var(--text);font-family:Manrope,Arial,sans-serif;min-height:100vh}button,input{font:inherit}button{cursor:pointer}a{color:inherit;text-decoration:none}.shell{width:min(1450px,calc(100% - 56px));margin:auto}
+header{height:82px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px}.brand{display:flex;align-items:center;gap:12px}.mark{width:42px;height:38px;display:block}.brand strong{font:600 23px Oswald,sans-serif;letter-spacing:.04em;font-style:italic;display:block;line-height:1}.brand small{color:#aab4bd;letter-spacing:.17em;font-size:8px;font-weight:800;display:block;margin-top:6px}.top-right{display:flex;align-items:center;gap:12px}.demo-pill{border:1px solid rgba(255,201,40,.27);color:var(--yellow);background:rgba(255,201,40,.07);border-radius:30px;padding:8px 12px;font-size:10px;letter-spacing:.14em;font-weight:800}.site-link{font-size:12px;color:#cad1d7;border-bottom:1px solid rgba(255,255,255,.24);padding-bottom:4px}.site-link:hover{color:var(--yellow);border-color:var(--yellow)}
+.intro{padding:42px 0 30px;display:flex;justify-content:space-between;align-items:end;gap:26px}.eyebrow{font-size:10px;letter-spacing:.23em;font-weight:800;color:var(--yellow);text-transform:uppercase;display:flex;align-items:center;gap:10px}.eyebrow:before{content:"";width:24px;height:2px;background:var(--yellow)}h1{font-size:clamp(32px,4vw,52px);line-height:1.02;letter-spacing:-.055em;margin:12px 0 10px;font-weight:800}h1 span{color:var(--yellow)}.intro p{color:var(--muted);font-size:13px;line-height:1.7;margin:0;max-width:520px}.intro-note{min-width:180px;text-align:right;color:#77838d;font-size:10px;line-height:1.7}
+.workspace{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(300px,.75fr);gap:18px;padding-bottom:70px;align-items:start}.stage,.side-card{background:linear-gradient(145deg,rgba(255,255,255,.045),rgba(255,255,255,.012));border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}.stage{overflow:hidden}.stage-head{padding:16px 19px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px;background:rgba(255,255,255,.018)}.stage-label{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:800}.live-dot{width:7px;height:7px;border-radius:50%;background:var(--green);box-shadow:0 0 0 4px rgba(88,201,149,.1)}.tabs{display:flex;gap:4px;padding:4px;border:1px solid var(--line);background:#0b1015;border-radius:12px}.tab{background:transparent;border:0;color:#87939e;border-radius:8px;padding:8px 12px;font-size:11px;font-weight:800;transition:.2s}.tab.active{background:#26313b;color:white}.tab.active .tab-icon{color:var(--yellow)}.tab-icon{margin-right:5px}
+.client-view{padding:22px;display:grid;grid-template-columns:minmax(0,1fr) 240px;gap:18px;background:radial-gradient(500px 320px at 18% 20%,rgba(36,59,77,.2),transparent 65%),#0d1319}.phone{width:100%;max-width:520px;margin:0 auto;border:1px solid #394550;border-radius:25px;overflow:hidden;background:#101820;box-shadow:0 25px 60px rgba(0,0,0,.38)}.phone-top{height:34px;background:#151f29;display:flex;align-items:center;justify-content:center;color:#9daab4;font-size:9px;letter-spacing:.13em}.chat-header{padding:15px 17px;display:flex;align-items:center;gap:11px;background:#1b2935;border-bottom:1px solid rgba(255,255,255,.05)}.avatar{width:38px;height:38px;border-radius:13px;background:linear-gradient(145deg,#ffe078,#e6aa00);display:grid;place-items:center;color:#101418;font:700 17px Oswald,sans-serif;box-shadow:0 5px 18px rgba(255,201,40,.16)}.chat-header strong{font-size:12px;display:block}.chat-header small{font-size:9px;color:#8f9eaa;display:block;margin-top:3px}.chat-header .verified{margin-left:auto;color:var(--green);font-size:15px}.chat-wall{padding:16px 14px 14px;min-height:470px;max-height:600px;overflow:auto;background:linear-gradient(rgba(12,19,25,.94),rgba(12,19,25,.97)),url('/assets/hero-poster.webp') center/cover}.date-chip{display:table;margin:0 auto 14px;padding:5px 10px;background:#202c36;color:#8495a2;border-radius:20px;font-size:9px}.bubble{max-width:92%;padding:12px 13px;background:#1b2934;border:1px solid rgba(255,255,255,.045);border-radius:4px 14px 14px 14px;margin:0 0 10px;font-size:11px;line-height:1.65;color:#e7edf1;white-space:pre-line;animation:rise .25s ease}.bubble.out{margin-left:auto;background:#273a42;border-radius:14px 4px 14px 14px}.bubble .sub{color:#9fb0bc;font-size:9px;display:block;margin-top:6px}.bubble strong{color:white}.bubble .gold{color:var(--yellow)}.bot-menu{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin:12px 0 8px}.bot-btn{border:1px solid rgba(255,201,40,.22);background:linear-gradient(145deg,#202b35,#17222c);border-radius:10px;color:#f2f5f6;padding:11px 9px;text-align:left;font-size:10px;font-weight:800;display:flex;align-items:center;gap:8px;min-height:48px;transition:.2s}.bot-btn:hover{border-color:var(--yellow);transform:translateY(-2px);background:#293641}.bot-btn .ico{font-size:16px;width:21px;text-align:center}.bot-btn.wide{grid-column:1/-1;justify-content:center;text-align:center;min-height:42px}.quick-area{padding:11px 13px 14px;background:#111b24;border-top:1px solid rgba(255,255,255,.05)}.quick-label{font-size:8px;text-transform:uppercase;letter-spacing:.14em;color:#7f8d98;margin-bottom:8px}.quick-row{display:flex;flex-wrap:wrap;gap:6px}.quick{border:1px solid rgba(255,255,255,.13);border-radius:20px;background:transparent;color:#cbd4db;font-size:9px;padding:7px 10px}.quick:hover{border-color:var(--yellow);color:var(--yellow)}.flow-progress{height:3px;background:#263440;margin:0 0 12px;border-radius:9px;overflow:hidden}.flow-progress span{display:block;height:100%;background:var(--yellow);transition:width .25s}.form-step{display:flex;gap:7px;flex-wrap:wrap;margin-top:12px}.form-step input{width:100%;min-width:0;background:#0e171f;border:1px solid #3a4a57;border-radius:9px;padding:11px 12px;color:white;font-size:11px;outline:none}.form-step input:focus{border-color:var(--yellow)}.form-step button{border:1px solid rgba(255,201,40,.32);background:rgba(255,201,40,.1);color:var(--yellow);padding:9px 13px;border-radius:9px;font-size:10px;font-weight:800}.form-step button:hover{background:var(--yellow);color:#13171a}.choice-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:12px}.choice{padding:9px 10px;text-align:center;border-radius:9px;background:#202e39;border:1px solid #354653;color:#dce5eb;font-size:10px}.choice:hover{border-color:var(--yellow);color:var(--yellow)}.summary{border:1px solid rgba(255,201,40,.2);background:rgba(255,201,40,.055);border-radius:12px;padding:12px;margin-top:10px}.summary h4{margin:0 0 8px;color:var(--yellow);font-size:10px;letter-spacing:.12em}.summary p{margin:4px 0;color:#c8d0d6;font-size:10px}.summary button{margin-top:10px;width:100%;background:var(--yellow);border:0;border-radius:8px;padding:10px;color:#111;font-size:10px;font-weight:900}.phone-caption{font-size:9px;color:#7f8c97;text-align:center;margin-top:10px}
+.flow-info{padding:8px 2px}.flow-info h3{font-size:13px;margin:0 0 9px}.flow-info p{font-size:10px;line-height:1.7;color:var(--muted);margin:0 0 15px}.flow-info .info-line{display:flex;gap:9px;padding:11px 0;border-top:1px solid var(--line);font-size:10px;color:#bbc5cc;line-height:1.5}.info-line b{color:var(--yellow);font-size:14px}.flow-info .tag{display:inline-block;border:1px solid rgba(88,201,149,.25);color:var(--green);border-radius:20px;padding:5px 9px;font-size:8px;font-weight:800;letter-spacing:.12em;margin-top:4px}
+.admin-view{padding:22px;background:radial-gradient(500px 320px at 18% 20%,rgba(36,59,77,.2),transparent 65%),#0d1319}.admin-top{display:flex;align-items:center;justify-content:space-between;gap:14px;margin-bottom:18px}.admin-top h2{font-size:18px;margin:0}.admin-top p{color:var(--muted);font-size:10px;margin:5px 0 0}.admin-tools{display:flex;gap:8px}.tool-btn{border:1px solid var(--line);background:#17212a;color:#bdc8d0;padding:8px 10px;border-radius:9px;font-size:9px}.metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:9px;margin-bottom:17px}.metric{border:1px solid var(--line);background:linear-gradient(145deg,#19232c,#111820);border-radius:13px;padding:13px}.metric span{display:block;color:#84919b;font-size:9px}.metric strong{font:600 25px Oswald,sans-serif;display:block;margin-top:4px}.metric em{font-style:normal;color:var(--green);font-size:8px}.lead-table{border:1px solid var(--line);border-radius:14px;overflow:hidden}.table-head{display:grid;grid-template-columns:1.2fr 1fr .8fr .7fr;gap:8px;padding:11px 14px;background:#17212a;color:#8795a0;font-size:8px;text-transform:uppercase;letter-spacing:.1em}.lead{display:grid;grid-template-columns:1.2fr 1fr .8fr .7fr;gap:8px;align-items:center;padding:13px 14px;border-top:1px solid var(--line);font-size:10px}.lead strong{display:block;font-size:10px}.lead small{display:block;color:#87939d;font-size:8px;margin-top:4px}.service-tag{color:#c3ccd2}.status{font-size:8px;border-radius:20px;padding:5px 7px;display:inline-block;background:rgba(255,201,40,.1);color:var(--yellow);white-space:nowrap}.status.done{color:var(--green);background:rgba(88,201,149,.1)}.status.new{color:#8dc1e3;background:rgba(141,193,227,.1)}.lead-action{border:1px solid #40515f;background:#1a2630;color:#d7e0e6;border-radius:7px;padding:6px 7px;font-size:8px}.lead-action:hover{border-color:var(--yellow);color:var(--yellow)}.admin-foot{display:flex;justify-content:space-between;gap:15px;align-items:center;color:#76848f;font-size:9px;margin-top:12px}
+.side{display:grid;gap:14px}.side-card{padding:19px}.side-card h3{margin:0 0 12px;font-size:13px}.side-card>p{color:var(--muted);font-size:10px;line-height:1.7;margin:0}.feature{display:flex;gap:11px;padding:11px 0;border-top:1px solid var(--line)}.feature:first-of-type{border-top:0}.feature-icon{width:31px;height:31px;flex:none;border-radius:9px;background:rgba(255,201,40,.09);display:grid;place-items:center;color:var(--yellow);font-size:14px}.feature strong{display:block;font-size:10px;margin-bottom:4px}.feature span{display:block;font-size:9px;color:#8e9aa4;line-height:1.5}.flow-list{display:grid;gap:8px}.flow-item{display:flex;gap:10px;align-items:center;font-size:9px;color:#c1cbd2}.num{width:22px;height:22px;border-radius:7px;display:grid;place-items:center;background:#222f39;color:var(--yellow);font:600 11px Oswald}.warning{border-color:rgba(255,201,40,.2);background:linear-gradient(145deg,rgba(255,201,40,.07),rgba(255,255,255,.012))}.warning strong{color:var(--yellow)}.warning p{font-size:9px}
+footer{border-top:1px solid var(--line);padding:20px 0 28px;color:#74808a;font-size:9px;display:flex;justify-content:space-between;gap:15px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#1d2a33;border:1px solid rgba(255,201,40,.28);color:white;border-radius:12px;padding:12px 16px;font-size:11px;box-shadow:var(--shadow);transition:.25s;z-index:10}.toast.show{opacity:1;transform:translate(-50%,0)}
+@keyframes rise{from{opacity:0;transform:translateY(7px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:1000px){.workspace{grid-template-columns:1fr}.side{grid-template-columns:1fr 1fr}.client-view{grid-template-columns:minmax(0,1fr) 220px}.intro{align-items:flex-start}.intro-note{display:none}}
+@media(max-width:700px){.shell{width:min(100% - 28px,560px)}header{height:68px}.brand strong{font-size:19px}.brand small{font-size:7px}.mark{width:35px}.site-link{display:none}.intro{padding:29px 0 22px;display:block}.intro p{font-size:12px}.workspace{gap:12px}.stage-head{padding:12px;align-items:flex-start;flex-direction:column}.tabs{width:100%}.tab{flex:1}.client-view{display:block;padding:12px}.flow-info{display:none}.chat-wall{min-height:450px;max-height:560px}.admin-view{padding:12px;overflow:auto}.metric-grid{grid-template-columns:1fr 1fr}.table-head,.lead{grid-template-columns:1.15fr 1fr .85fr}.table-head span:last-child,.lead>div:last-child{display:none}.side{grid-template-columns:1fr}.side-card{padding:16px}.admin-top{align-items:flex-start;flex-direction:column}.admin-tools{width:100%}.tool-btn{flex:1}footer{display:block;line-height:1.8}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{scroll-behavior:auto!important;animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header>
+ <a class="brand" href="/" aria-label="NICKISHCHENKO — головна">
+  <svg class="mark" viewBox="0 0 48 42" aria-hidden="true"><path d="M4 36V6h9l18 22V6h9v30h-9L13 14v22Z" fill="#ffc928"/><path d="M35 36 48 6" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="square" opacity=".82"/></svg>
+  <span><strong>NICKISHCHENKO</strong><small>АВТО ЗІ США&nbsp; | &nbsp;ВИКУП&nbsp; | &nbsp;ОБМІН</small></span>
+ </a>
+ <div class="top-right"><span class="demo-pill">INTERACTIVE CONCEPT</span><a class="site-link" href="/">Повернутися на сайт ↗</a></div>
+</header>
+<section class="intro">
+ <div><div class="eyebrow">DIGITAL AUTO ASSISTANT</div><h1>Ваш наступний автомобіль.<br><span>В одному повідомленні.</span></h1><p>Концепція Telegram-асистента, який приймає запити, допомагає сформувати технічне завдання та передає менеджеру структуровану заявку.</p></div>
+ <div class="intro-note">КОНЦЕПТ ДЛЯ ПРЕЗЕНТАЦІЇ<br>КЛІЄНТСЬКИЙ БОТ + CRM<br>UA / MOBILE FIRST</div>
+</section>
+<div class="workspace">
+ <main class="stage">
+  <div class="stage-head">
+   <div class="stage-label"><span class="live-dot"></span><span id="stageTitle">Інтерфейс клієнта</span></div>
+   <div class="tabs" role="tablist" aria-label="Режим перегляду">
+    <button class="tab active" id="customerTab" role="tab" aria-selected="true"><span class="tab-icon">◉</span> Клієнтський бот</button>
+    <button class="tab" id="adminTab" role="tab" aria-selected="false"><span class="tab-icon">▦</span> CRM менеджера</button>
+   </div>
+  </div>
+  <section class="client-view" id="clientView">
+   <div>
+    <div class="phone">
+     <div class="phone-top">TELEGRAM · BOT PREVIEW</div>
+     <div class="chat-header"><div class="avatar">N</div><div><strong>NICKISHCHENKO | AUTO</strong><small>бот-консультант · демонстрація</small></div><span class="verified">✓</span></div>
+     <div class="chat-wall" id="chatWall" aria-live="polite"></div>
+     <div class="quick-area"><div class="quick-label">Швидкі дії</div><div class="quick-row"><button class="quick" data-action="home">⌂ Головне меню</button><button class="quick" data-action="manager">Менеджер</button><button class="quick" data-action="reset">Почати спочатку ↻</button></div></div>
+    </div>
+    <div class="phone-caption">Інтерактивний макет: натискайте кнопки в чаті, щоб пройти сценарій клієнта.</div>
+   </div>
+   <aside class="flow-info">
+    <h3>Як працює сценарій</h3><p>Бот не перевантажує клієнта довгою анкетою. Він збирає лише потрібні дані для обраної послуги, а потім показує підсумок перед відправленням.</p>
+    <div class="info-line"><b>01</b><span>Клієнт обирає напрямок звернення.</span></div>
+    <div class="info-line"><b>02</b><span>Відповідає на короткі запитання або обирає готові варіанти.</span></div>
+    <div class="info-line"><b>03</b><span>Перевіряє картку заявки та залишає контакт.</span></div>
+    <span class="tag">NO SPAM · HUMAN SUPPORT</span>
+   </aside>
+  </section>
+  <section class="admin-view" id="adminView" hidden>
+   <div class="admin-top"><div><div class="eyebrow">LEAD MANAGEMENT</div><h2>Панель менеджера</h2><p>Демонстраційні заявки — приклад того, як виглядатиме робоча CRM.</p></div><div class="admin-tools"><button class="tool-btn" id="newLead">＋ Демо-заявка</button><button class="tool-btn" id="refreshLeads">↻ Оновити вигляд</button></div></div>
+   <div class="metric-grid"><div class="metric"><span>Усього заявок</span><strong id="metricTotal">03</strong><em>↗ усі звернення</em></div><div class="metric"><span>Нові</span><strong id="metricNew">01</strong><em>потребують уваги</em></div><div class="metric"><span>У роботі</span><strong id="metricWork">01</strong><em>активні звернення</em></div><div class="metric"><span>Завершені</span><strong id="metricDone">01</strong><em>закриті заявки</em></div></div>
+   <div class="lead-table"><div class="table-head"><span>Клієнт</span><span>Послуга</span><span>Статус</span><span>Дія</span></div><div id="leadRows"></div></div>
+   <div class="admin-foot"><span>● Локальна демонстрація · дані не надсилаються</span><span>Останнє оновлення: щойно</span></div>
+  </section>
+ </main>
+ <aside class="side">
+  <section class="side-card"><div class="eyebrow">BOT CAPABILITIES</div><h3>Що отримує клієнт</h3>
+   <div class="feature"><div class="feature-icon">🇺🇸</div><div><strong>Авто зі США під ключ</strong><span>Бюджет, модель, побажання, контакт — в одному сценарії.</span></div></div>
+   <div class="feature"><div class="feature-icon">₴</div><div><strong>Викуп автомобіля</strong><span>Дані авто, пробіг, стан і бажана ціна для попередньої оцінки.</span></div></div>
+   <div class="feature"><div class="feature-icon">⇄</div><div><strong>Обмін або підбір</strong><span>Два автомобілі, бюджет доплати та ключові параметри.</span></div></div>
+   <div class="feature"><div class="feature-icon">♧</div><div><strong>Особистий менеджер</strong><span>Передача складного питання людині, а не нескінченний діалог із ботом.</span></div></div>
+  </section>
+  <section class="side-card"><div class="eyebrow">MANAGER WORKFLOW</div><h3>Що відбувається після заявки</h3><div class="flow-list"><div class="flow-item"><span class="num">1</span> Заявка зберігається в базі</div><div class="flow-item"><span class="num">2</span> Менеджер отримує сповіщення</div><div class="flow-item"><span class="num">3</span> Статус змінюється в CRM</div><div class="flow-item"><span class="num">4</span> Клієнт отримує оновлення</div></div></section>
+  <section class="side-card warning"><h3><strong>Важливо про цей концепт</strong></h3><p>Це інтерактивна презентація, а не підключений Telegram-бот. Надсилання повідомлень, реальне збереження заявок, CRM, сповіщення та статуси потребуватимуть серверної частини й токена Telegram Bot API.</p></section>
+ </aside>
+</div>
+<footer><span>© NICKISHCHENKO · AUTO ASSISTANT CONCEPT</span><span>Концепт від BotForge Agency · UI / UX DEMO</span></footer>
+</div>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+<script>
+(function(){
+'use strict';
+const wall=document.getElementById('chatWall');
+const clientView=document.getElementById('clientView');
+const adminView=document.getElementById('adminView');
+const customerTab=document.getElementById('customerTab');
+const adminTab=document.getElementById('adminTab');
+const stageTitle=document.getElementById('stageTitle');
+const toast=document.getElementById('toast');
+let activeFlow=null,stepIndex=0,answers={},leads=[
+{id:'#1042',name:'Андрій К.',contact:'@andrii_k',service:'Авто зі США',status:'Нова',kind:'new'},
+{id:'#1041',name:'Олександр М.',contact:'+380 •• ••• 12 45',service:'Викуп авто',status:'У роботі',kind:'work'},
+{id:'#1040',name:'Ірина В.',contact:'@iryna_v',service:'Обмін авто',status:'Завершена',kind:'done'}
+];
+const flows={
+usa:{title:'Замовити авто зі США',steps:[
+{q:'Яку марку або модель автомобіля розглядаєте?',hint:'Наприклад: BMW X5, Audi Q7 або поки не визначилися.',type:'text',placeholder:'Марка та модель'},
+{q:'Який бюджет на автомобіль під ключ?',type:'choice',choices:['До $10 000','$10 000–15 000','$15 000–25 000','$25 000+','Потрібна консультація']},
+{q:'Який тип кузова вам підходить?',type:'choice',choices:['Кросовер / SUV','Седан','Універсал','Не принципово']},
+{q:'Залиште ім’я та контакт для зв’язку.',type:'contact'}]},
+sell:{title:'Продати автомобіль',steps:[
+{q:'Який автомобіль хочете продати?',hint:'Марка, модель і комплектація.',type:'text',placeholder:'Наприклад: Volkswagen Passat B8'},
+{q:'Вкажіть рік випуску та пробіг.',type:'text',placeholder:'2018 рік · 145 000 км'},
+{q:'Опишіть стан авто та бажану ціну.',hint:'За наявності можна додати фото менеджеру пізніше.',type:'text',placeholder:'Стан, пошкодження, бажана ціна'},
+{q:'Як до вас звертатися та куди написати?',type:'contact'}]},
+trade:{title:'Обміняти автомобіль',steps:[
+{q:'Який автомобіль пропонуєте на обмін?',type:'text',placeholder:'Марка, модель, рік, пробіг'},
+{q:'На який автомобіль хочете обміняти?',type:'text',placeholder:'Модель або побажання'},
+{q:'Який варіант доплати розглядаєте?',type:'choice',choices:['Можу доплатити до $2 000','$2 000–5 000','$5 000+','Хочу обговорити']},
+{q:'Залиште ім’я та контакт для зв’язку.',type:'contact'}]},
+pick:{title:'Підібрати автомобіль',steps:[
+{q:'Яку марку або модель шукаєте?',type:'text',placeholder:'Наприклад: Audi A6'},
+{q:'Ваш орієнтовний бюджет?',type:'choice',choices:['До $10 000','$10 000–15 000','$15 000–25 000','$25 000+']},
+{q:'Що важливо врахувати під час підбору?',hint:'Тип пального, комплектація, привід та інші побажання.',type:'text',placeholder:'Ваші побажання'},
+{q:'Залиште ім’я та контакт.',type:'contact'}]}
+};
+function showToast(text){toast.textContent=text;toast.classList.add('show');clearTimeout(showToast.timer);showToast.timer=setTimeout(()=>toast.classList.remove('show'),2600)}
+function escapeHtml(v){return String(v||'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function bubble(text,extra){return '<div class="bubble '+(extra||'')+'">'+text+'</div>'}
+function renderHome(){
+activeFlow=null;stepIndex=0;answers={};
+wall.innerHTML='<div class="date-chip">Сьогодні</div>'+bubble('Вітаємо у <strong>NICKISHCHENKO</strong>! 👋<br>Допоможемо знайти, придбати або продати автомобіль.<br><br>Оберіть, що вас цікавить:')+
+'<div class="bot-menu"><button class="bot-btn" data-service="usa"><span class="ico">🇺🇸</span><span>Авто зі США</span></button><button class="bot-btn" data-service="sell"><span class="ico">₴</span><span>Продати авто</span></button><button class="bot-btn" data-service="trade"><span class="ico">⇄</span><span>Обміняти авто</span></button><button class="bot-btn" data-service="pick"><span class="ico">⌕</span><span>Підібрати авто</span></button><button class="bot-btn wide" data-action="delivery"><span class="ico">♧</span>Як проходить доставка зі США?</button><button class="bot-btn wide" data-action="manager"><span class="ico">◉</span>Зв’язатися з менеджером</button></div>';
+}
+function addUser(text){wall.insertAdjacentHTML('beforeend',bubble(escapeHtml(text),'out'))}
+function renderStep(){
+const flow=flows[activeFlow],step=flow.steps[stepIndex],progress=Math.round(stepIndex/flow.steps.length*100);
+let html='<div class="flow-progress"><span style="width:'+progress+'%"></span></div>'+bubble('<strong>'+escapeHtml(flow.title)+'</strong><br>'+escapeHtml(step.q)+(step.hint?'<span class="sub">'+escapeHtml(step.hint)+'</span>':'' )+'<span class="sub">Крок '+(stepIndex+1)+' із '+flow.steps.length+'</span>');
+if(step.type==='choice'){
+html+='<div class="choice-grid">'+step.choices.map((v,i)=>'<button class="choice" data-choice="'+i+'">'+escapeHtml(v)+'</button>').join('')+'</div>';
+}else if(step.type==='contact'){
+html+='<form class="form-step" id="stepForm"><input name="name" placeholder="Ваше ім’я" required maxlength="70" autocomplete="name"><input name="contact" placeholder="Телефон або @Instagram" required maxlength="100"><button type="submit">Продовжити →</button></form>';
+}else{
+html+='<form class="form-step" id="stepForm"><input name="answer" placeholder="'+escapeHtml(step.placeholder||'Ваша відповідь')+'" required maxlength="180"><button type="submit">Продовжити →</button></form>';
+}
+wall.insertAdjacentHTML('beforeend',html);wall.scrollTop=wall.scrollHeight;
+}
+function nextStep(value){
+const flow=flows[activeFlow],step=flow.steps[stepIndex];
+answers[stepIndex]=value;
+addUser(typeof value==='object'?(value.name+' · '+value.contact):value);
+stepIndex++;
+if(stepIndex<flow.steps.length){renderStep()}else{renderSummary()}
+}
+function renderSummary(){
+const flow=flows[activeFlow];
+const lines=flow.steps.map((s,i)=>'<p><b>'+escapeHtml(s.q)+'</b><br>'+escapeHtml(typeof answers[i]==='object'?(answers[i].name+' · '+answers[i].contact):answers[i])+'</p>').join('');
+wall.insertAdjacentHTML('beforeend',bubble('Дякуємо! Перевірте, будь ласка, вашу заявку:')+'<div class="summary"><h4>ПОПЕРЕДНЯ ЗАЯВКА · '+escapeHtml(flow.title.toUpperCase())+'</h4>'+lines+'<button data-action="submitLead">Підтвердити заявку ↗</button><button data-action="restart" style="margin-top:7px;background:#263540;color:#d7e0e6">Змінити відповіді</button></div>');
+wall.scrollTop=wall.scrollHeight;
+}
+function submitLead(){
+const flow=flows[activeFlow];const contact=answers[flow.steps.length-1]||{name:'Демо-клієнт',contact:'контакт у демо'};
+const lead={id:'#'+(1043+leads.length-3),name:contact.name,contact:contact.contact,service:flow.title,status:'Нова',kind:'new'};
+leads.unshift(lead);renderLeads();
+wall.insertAdjacentHTML('beforeend',bubble('✅ <strong>Дякуємо, '+escapeHtml(contact.name)+'!</strong><br>Вашу заявку сформовано в демонстраційному режимі.<br><br>У робочій версії менеджер отримає всі відповіді та зв’яжеться з вами.',''));
+wall.scrollTop=wall.scrollHeight;activeFlow=null;showToast('Демо-заявку додано до CRM-прикладу');
+}
+function startFlow(key){
+activeFlow=key;stepIndex=0;answers={};const flow=flows[key];
+wall.innerHTML='<div class="date-chip">Нова заявка</div>';addUser(flow.title);renderStep();
+}
+function renderLeads(){
+const rows=document.getElementById('leadRows');
+rows.innerHTML=leads.map((l,i)=>'<div class="lead"><div><strong>'+escapeHtml(l.name)+'</strong><small>'+escapeHtml(l.id)+' · '+escapeHtml(l.contact)+'</small></div><div class="service-tag">'+escapeHtml(l.service)+'</div><div><span class="status '+(l.kind==='done'?'done':l.kind==='new'?'new':'')+'">'+escapeHtml(l.status)+'</span></div><div><button class="lead-action" data-lead="'+i+'">'+(l.kind==='new'?'Взяти':l.kind==='work'?'Закрити':'Переглянути')+'</button></div></div>').join('');
+document.getElementById('metricTotal').textContent=String(leads.length).padStart(2,'0');
+document.getElementById('metricNew').textContent=String(leads.filter(l=>l.kind==='new').length).padStart(2,'0');
+document.getElementById('metricWork').textContent=String(leads.filter(l=>l.kind==='work').length).padStart(2,'0');
+document.getElementById('metricDone').textContent=String(leads.filter(l=>l.kind==='done').length).padStart(2,'0');
+}
+function showView(which){
+const isAdmin=which==='admin';clientView.hidden=isAdmin;adminView.hidden=!isAdmin;
+customerTab.classList.toggle('active',!isAdmin);adminTab.classList.toggle('active',isAdmin);
+customerTab.setAttribute('aria-selected',String(!isAdmin));adminTab.setAttribute('aria-selected',String(isAdmin));
+stageTitle.textContent=isAdmin?'CRM менеджера':'Інтерфейс клієнта';
+if(isAdmin)renderLeads();
+}
+wall.addEventListener('click',e=>{
+const svc=e.target.closest('[data-service]');if(svc){startFlow(svc.dataset.service);return}
+const choice=e.target.closest('[data-choice]');if(choice&&activeFlow){const step=flows[activeFlow].steps[stepIndex];nextStep(step.choices[Number(choice.dataset.choice)]);return}
+const action=e.target.closest('[data-action]')?.dataset.action;
+if(action==='home'||action==='reset'){renderHome();return}
+if(action==='manager'){addUser('Хочу поспілкуватися з менеджером');wall.insertAdjacentHTML('beforeend',bubble('Звичайно! У робочій версії бот передасть менеджеру ваш Telegram-профіль і короткий контекст звернення.<br><br><span class="gold">NICKISHCHENKO · особистий контакт</span>'));wall.scrollTop=wall.scrollHeight;return}
+if(action==='delivery'){addUser('Як проходить доставка зі США?');wall.insertAdjacentHTML('beforeend',bubble('<strong>5 етапів до отримання ключів:</strong><br>01 · Підбір авто<br>02 · Перевірка та викуп<br>03 · Доставка й логістика<br>04 · Документи та оформлення<br>05 · Передача автомобіля<br><span class="sub">На кожному етапі менеджер пояснює наступні кроки та погоджує важливі рішення.</span>'));wall.scrollTop=wall.scrollHeight;return}
+if(action==='submitLead'){submitLead();return}
+if(action==='restart'&&activeFlow){stepIndex=0;answers={};wall.innerHTML=bubble('Повернімося до початку заявки.');renderStep()}
+});
+wall.addEventListener('submit',e=>{
+if(e.target.id!=='stepForm')return;e.preventDefault();
+const data=new FormData(e.target);if(flows[activeFlow].steps[stepIndex].type==='contact'){
+const name=String(data.get('name')||'').trim(),contact=String(data.get('contact')||'').trim();if(!name||!contact)return;nextStep({name,contact});
+}else{const val=String(data.get('answer')||'').trim();if(val)nextStep(val)}
+});
+document.getElementById('leadRows').addEventListener('click',e=>{
+const btn=e.target.closest('[data-lead]');if(!btn)return;const i=Number(btn.dataset.lead),lead=leads[i];
+if(lead.kind==='new'){lead.kind='work';lead.status='У роботі';showToast('Заявку взято в роботу')}
+else if(lead.kind==='work'){lead.kind='done';lead.status='Завершена';showToast('Заявку позначено завершеною')}
+else{showToast('Картка заявки · '+lead.id)}
+renderLeads();
+});
+customerTab.addEventListener('click',()=>showView('customer'));
+adminTab.addEventListener('click',()=>showView('admin'));
+document.getElementById('newLead').addEventListener('click',()=>{leads.unshift({id:'#'+(1043+leads.length-3),name:'Новий клієнт',contact:'@demo_client',service:'Нова консультація',status:'Нова',kind:'new'});renderLeads();showToast('Додано демонстраційну заявку')});
+document.getElementById('refreshLeads').addEventListener('click',()=>{renderLeads();showToast('Демонстраційні дані оновлено')});
+renderHome();renderLeads();
+})();
+</script>
+</body>
+</html>
